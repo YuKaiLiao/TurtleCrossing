@@ -21,8 +21,8 @@ class CarManager:
                 self.add_new_car()
 
     def move_all(self):
-        for i in self.cars:
-            i.move(STARTING_MOVE_DISTANCE)
+        for car in self.cars:
+            car.move(STARTING_MOVE_DISTANCE)
 
     def add_new_car(self):
         if len(self.cars) > 0:
@@ -31,3 +31,9 @@ class CarManager:
                 return
         car = Car(self.random_manager.choice(COLORS), (270, self.random_manager.randrange(-250, 250, 10)))
         self.cars.append(car)
+
+    def is_collision_happen(self, position):
+        for car in self.cars:
+            if car.distance(position) < 25:
+                return True
+        return False

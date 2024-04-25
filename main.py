@@ -18,5 +18,10 @@ while game_is_on:
     time.sleep(0.1)
     car_manager.add_new_car()
     car_manager.move_all()
+    if car_manager.is_collision_happen(player.pos()):
+        game_is_on = False
     screen.update()
 
+print("Game Over!!!")
+
+screen.exitonclick()
